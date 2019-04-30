@@ -2,8 +2,6 @@ package namedresults
 
 import (
     "testing"
-
-    "github.com/bornite/ATourOfGo"
 )
 
 func TestSplit(t *testing.T) {
