@@ -1,4 +1,4 @@
-package named-results
+package namedresults
 
 import (
     "testing"
@@ -11,5 +11,4 @@ func TestSplit(t *testing.T) {
     if a != 7 || b != 10 {
         t.Fatalf("failed test. a=%d, b=%d", a, b)
     }
-
 }

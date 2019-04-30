@@ -1,4 +1,4 @@
-package named-results
+package namedresults
 
 import "fmt"
 
