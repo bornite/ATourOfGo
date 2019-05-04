@@ -8,3 +8,4 @@ test:
 	$(GOTEST) $(TESTOPT) imports_test.go imports.go
 	$(GOTEST) $(TESTOPT) functions_test.go functions.go
 	$(GOTEST) $(TESTOPT) multiple-results_test.go multiple-results.go
+	$(GOTEST) $(TESTOPT) named-results_test.go named-results.go
