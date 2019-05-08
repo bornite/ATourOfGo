@@ -10,3 +10,4 @@ test:
 	$(GOTEST) $(TESTOPT) multiple-results_test.go multiple-results.go
 	$(GOTEST) $(TESTOPT) named-results_test.go named-results.go
 	$(GOTEST) $(TESTOPT) variables_test.go variables.go
+	$(GOTEST) $(TESTOPT) variables-with-initializers_test.go variables-with-initializers.go
