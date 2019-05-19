@@ -3,5 +3,5 @@ package main
 func ExampleMain() {
     main()
     // Output:
-    // My favorite number is 1
+    // 1 2 3 true false no!
 }

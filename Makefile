@@ -11,3 +11,6 @@ test:
 	$(GOTEST) $(TESTOPT) named-results_test.go named-results.go
 	$(GOTEST) $(TESTOPT) variables_test.go variables.go
 	$(GOTEST) $(TESTOPT) variables-with-initializers_test.go variables-with-initializers.go
+	$(GOTEST) $(TESTOPT) short-variable-declarations_test.go short-variable-declarations.go
+	$(GOTEST) $(TESTOPT) basic-types_test.go basic-types.go
+	$(GOTEST) $(TESTOPT) zero_test.go zero.go
