@@ -14,3 +14,4 @@ test:
 	$(GOTEST) $(TESTOPT) short-variable-declarations_test.go short-variable-declarations.go
 	$(GOTEST) $(TESTOPT) basic-types_test.go basic-types.go
 	$(GOTEST) $(TESTOPT) zero_test.go zero.go
+	$(GOTEST) $(TESTOPT) type-conversions_test.go type-conversions.go
