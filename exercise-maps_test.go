@@ -30,8 +30,7 @@ func TestWordCount(t *testing.T) {
         got := WordCount(c.in)
         if len(c.want) != len(got) {
             t.Fatalf("failed len test. got=%v, want=%v", len(got), len(c.want))
-        }
-        else {
+        } else {
             for k := range c.want {
                 if c.want[k] != got[k] {
                     t.Fatalf("failed len test. got=%v, want=%v", got[k], c.want[k])
