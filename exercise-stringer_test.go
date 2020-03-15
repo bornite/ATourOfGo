@@ -36,7 +36,7 @@ func TestString(t *testing.T) {
 		fmt.Printf("%v\n", loopback)
 	})
 
-	if out != "127.0.1.1\n" {
+	if out != "127.0.0.1\n" {
 		t.Errorf("test1 : Unexpected string: %s", out)
 	}
 }
