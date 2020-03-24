@@ -17,7 +17,8 @@ func (i Image) Bounds() image.Rectangle {
 }
 
 func (i Image) At(x, y int) color.Color {
-    return color.RGBA{uint8(x), uint8(y), 255, 255}
+    z := uint8((x-y)/2)
+    return color.RGBA{z, z, 255, 255}
 }
 
 func main() {
