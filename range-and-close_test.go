@@ -5,7 +5,7 @@ import (
 )
 
 
-func Test(t *testing.T) {
+func TestFibonacci(t *testing.T) {
 
     c := make(chan int, 50)
     n := cap(c)
