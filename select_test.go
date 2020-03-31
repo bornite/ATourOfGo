@@ -5,6 +5,7 @@ import (
     "bytes"
     "io"
     "os"
+    "fmt"
 )
 
 func captureStdout(f func()) string {
@@ -27,10 +28,19 @@ func captureStdout(f func()) string {
     return buf.String()
 }
 
-func TestMain(t *testing.T) {
+func TestFibonacci(t *testing.T) {
+
+    c := make(chan int)
+    quit := make(chan int)
+    go func() {
+        for i := 0; i < 10; i++ {
+            fmt.Println(<-c)
+        }
+        quit <- 0
+    }()
 
     out := captureStdout(func() {
-            main()
+        fibonacci(c, quit)
     })
 
     expected := `
