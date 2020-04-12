@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"sync"
+        "time"
 )
 
 type Fetcher interface {
@@ -13,22 +15,41 @@ type Fetcher interface {
 // Crawl uses fetcher to recursively crawl
 // pages starting with url, to a maximum of depth.
 func Crawl(url string, depth int, fetcher Fetcher) {
-	// TODO: Fetch URLs in parallel.
-	// TODO: Don't fetch the same URL twice.
-	// This implementation doesn't do either:
-	if depth <= 0 {
-		return
+	UrlList := struct {
+		visited map[string]bool
+		sync.Mutex
+	}{
+		visited: make(map[string]bool),
 	}
-	body, urls, err := fetcher.Fetch(url)
-	if err != nil {
-		fmt.Println(err)
-		return
+	var wg sync.WaitGroup
+	var crawl func(string, int)
+	crawl = func(url string, depth int) {
+		if depth <= 0 {
+			return
+		}
+		UrlList.Lock()
+		if UrlList.visited[url] {
+			UrlList.Unlock()
+			return
+		}
+		UrlList.visited[url] = true
+		UrlList.Unlock()
+		body, urls, err := fetcher.Fetch(url)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		fmt.Printf("found: %s %q\n", url, body)
+		wg.Add(len(urls))
+		for _, u := range urls {
+			go func(u string) {
+				crawl(u, depth-1)
+				wg.Done()
+			}(u)
+		}
 	}
-	fmt.Printf("found: %s %q\n", url, body)
-	for _, u := range urls {
-		Crawl(u, depth-1, fetcher)
-	}
-	return
+	crawl(url, depth)
+	wg.Wait()
 }
 
 func main() {
@@ -44,6 +65,7 @@ type fakeResult struct {
 }
 
 func (f fakeFetcher) Fetch(url string) (string, []string, error) {
+        time.Sleep(1 * time.Second)
 	if res, ok := f[url]; ok {
 		return res.body, res.urls, nil
 	}
