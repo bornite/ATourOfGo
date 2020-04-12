@@ -14,6 +14,7 @@ type Fetcher interface {
 
 // Crawl uses fetcher to recursively crawl
 // pages starting with url, to a maximum of depth.
+// I referred to the sample at https://golang.org/pkg/sync/#WaitGroup.
 func Crawl(url string, depth int, fetcher Fetcher) {
 	UrlList := struct {
 		visited map[string]bool
