@@ -1,13 +1,9 @@
 ATourOfGo
 ====
 
-I will coding and write a test all the exercises on "A Tour of Go".
+All the sample code in "A Tour of Go" can be found in this repository.
 
 ## Description
-
-I will coding and write a test all the exercises on "A Tour of Go".
-
-I use "testing" for testing.
 
 ## Requirement
 
