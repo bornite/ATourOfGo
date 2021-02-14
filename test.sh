@@ -1,3 +1,5 @@
+#!/bin/sh
+
 docker build -t a-tour-of-go .
 
 for s in `ls *_test.go`
